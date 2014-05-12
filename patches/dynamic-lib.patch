@@ -1,0 +1,24 @@
+diff -ur antlr-2.7.7.orig/configure antlr-2.7.7/configure
+--- antlr-2.7.7.orig/configure	2006-11-01 22:37:18.000000000 +0100
++++ antlr-2.7.7/configure	2014-05-12 09:57:12.700320205 +0200
+@@ -1655,7 +1655,7 @@
+ ## Note: values might be overriden in C++ section.
+ OBJEXT=".o"
+ LIBEXT=".a"
+-ANTLR_LIB="$abs_this_builddir/lib/cpp/src/libantlr.a"
++ANTLR_LIB="$abs_this_builddir/lib/cpp/src/libantlr.so"
+ 
+ stdvars="scripts/config.vars"
+ stddeps="scripts/config.deps"
+diff -ur antlr-2.7.7.orig/scripts/cxx.sh.in antlr-2.7.7/scripts/cxx.sh.in
+--- antlr-2.7.7.orig/scripts/cxx.sh.in	2006-11-01 22:37:18.000000000 +0100
++++ antlr-2.7.7/scripts/cxx.sh.in	2014-05-12 09:58:02.897075920 +0200
+@@ -56,7 +56,7 @@
+     ;;
+ 
+   gcc)
+-    cxxflags="-felide-constructors -pipe"
++    cxxflags="-felide-constructors -pipe -fPIC"
+     case "${DEBUG}" in
+       0)
+         cxxflags="-O2 -DNDEBUG ${cxxflags}"
