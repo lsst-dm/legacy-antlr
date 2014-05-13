@@ -1,7 +1,7 @@
 # EupsPkg config file. Sourced by 'eupspkg'
 
 PKGDIR=$PWD
-CONFIGURE_OPTIONS="--disable-examples --prefix=$PREFIX"
+CONFIGURE_OPTIONS="--prefix=$PREFIX --disable-examples --enable-verbose --with-cxxflags=-fPIC"
 
 install()
 {

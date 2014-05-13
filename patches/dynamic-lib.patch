@@ -1,6 +1,18 @@
+diff -ur antlr-2.7.7.orig/antlr/Version.java antlr-2.7.7/antlr/Version.java
+--- antlr-2.7.7.orig/antlr/Version.java	2006-11-01 22:37:17.000000000 +0100
++++ antlr-2.7.7/antlr/Version.java	2014-05-13 17:07:40.299206067 +0200
+@@ -4,6 +4,6 @@
+ 	public static final String version    = "2";
+ 	public static final String subversion = "7";
+ 	public static final String patchlevel = "7";
+-	public static final String datestamp  = "2006-11-01";
+-	public static final String project_version = "2.7.7 ("+datestamp+")";
++	public static final String datestamp  = "20140513";
++	public static final String project_version = "2.7.7 (20140513)";
+ }
 diff -ur antlr-2.7.7.orig/configure antlr-2.7.7/configure
 --- antlr-2.7.7.orig/configure	2006-11-01 22:37:18.000000000 +0100
-+++ antlr-2.7.7/configure	2014-05-12 09:57:12.700320205 +0200
++++ antlr-2.7.7/configure	2014-05-13 17:06:43.126944379 +0200
 @@ -1655,7 +1655,7 @@
  ## Note: values might be overriden in C++ section.
  OBJEXT=".o"
@@ -10,15 +22,12 @@ diff -ur antlr-2.7.7.orig/configure antlr-2.7.7/configure
  
  stdvars="scripts/config.vars"
  stddeps="scripts/config.deps"
-diff -ur antlr-2.7.7.orig/scripts/cxx.sh.in antlr-2.7.7/scripts/cxx.sh.in
---- antlr-2.7.7.orig/scripts/cxx.sh.in	2006-11-01 22:37:18.000000000 +0100
-+++ antlr-2.7.7/scripts/cxx.sh.in	2014-05-12 09:58:02.897075920 +0200
-@@ -56,7 +56,7 @@
-     ;;
+@@ -4157,7 +4157,7 @@
+     ## just  overrule what autoconf figured out - we never asked for
+     ## this anyway. Our  handling  of compiler options is done below
+     ## in the fine tuning section.
+-    CXXFLAGS=""
++    CXXFLAGS="+ ${CXXFLAGS}"
  
-   gcc)
--    cxxflags="-felide-constructors -pipe"
-+    cxxflags="-felide-constructors -pipe -fPIC"
-     case "${DEBUG}" in
-       0)
-         cxxflags="-O2 -DNDEBUG ${cxxflags}"
+     ## 'cxx'  shall  be  the canonical compiler name. For example, gcc
+     ## cl, bcc, CC, etc. Note that this is in general not equal to CXX.
