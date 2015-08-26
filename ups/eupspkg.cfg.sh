@@ -1,12 +1,13 @@
 # EupsPkg config file. Sourced by 'eupspkg'
 
-PKGDIR=$PWD
 CONFIGURE_OPTIONS="--prefix=$PREFIX --disable-examples --enable-verbose --with-cxxflags=-fPIC"
 
 install()
 {
 	default_install
 
-	# do not erase lib/antlr.jar if it has been successfully built
-	cp -n ${PKGDIR}/antlr.jar  ${PREFIX}/lib/
+	# copy the supplied antlr.jar if it wasn't built (i.e., if javac is not present)
+	if [[ ! -f ${PREFIX}/lib/antlr.jar ]]; then
+		cp antlr.jar  ${PREFIX}/lib/
+	fi
 }
